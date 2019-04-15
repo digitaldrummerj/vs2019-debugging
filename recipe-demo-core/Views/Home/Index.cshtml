@@ -1,0 +1,32 @@
+﻿@model RecipesViewModel
+
+<main role="main">
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                    @foreach (Recipe recipe in Model.Recipes)
+                    {
+                        <a asp-action="Recipe" asp-route-id="@recipe.Id">
+                            <div class="card-container">
+                                <div class="card box-shadow">
+                                    <img class="card-img-top" src="@recipe.Image" alt="Image of @recipe.Title">
+                                    <div class="card-body">
+                                        <p class="card-text">@recipe.Title</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <small class="text-muted">@recipe.ReadyInMinutes mins</small>
+                                        </div>
+                                        <div class='d-flex justify-content-between align-items-center'>
+                                            <small class="text-muted">Rating: @Html.DisplayFor(modelItem => recipe.SpoonacularScore)%</small>
+
+                                        </div>
+                                        <small class="text-muted">Hits: @Html.DisplayFor(modelItem => recipe.Hits)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                    </div>
+                </div>
+        </div>
+    </div>
+</main>
